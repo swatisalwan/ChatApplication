@@ -1,0 +1,65 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<div class="container">
+    <div class="row">
+        <div >
+            <div class="panel panel-primary">
+
+                <!-- heading -->
+
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-comment"></span> Chat
+                   
+                   
+                       <input type="text" [(ngModel)]="user">
+                    
+                  
+
+                    <select [(ngModel)]="selectedRoom" class="type">
+                        <option value="">Select Room</option>
+                        <option value="Java">Java</option>
+                        <option value="DotNet">Dotnet</option>
+                        <option value="Azure">Azure</option>
+                      </select>
+
+                    <button class="btn btn-success" (click)="onSelect()" > Join</button>
+                    <button  class="btn btn-danger" (click)="leaving()"> Leave</button>
+
+                   
+                </div>
+
+                <!-- Body -->
+                <div class="panel-body">
+                    <ul *ngFor="let x of msgList" class="chat">
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">{{x.user}}</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span>{{x.date | date:'long'}}</small>
+                                </div>
+                                <p>
+                                   {{x.message}}
+                                </p>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input [(ngModel)]="message" id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button (click)="sendMessage()" class="btn btn-primary btn-sm" id="btn-chat">
+                                Send</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
